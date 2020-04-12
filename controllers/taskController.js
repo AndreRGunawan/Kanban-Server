@@ -22,6 +22,8 @@ class TaskController {
     }
     static addNewTask(req,res,next){
         // model attb. : title, category, tags, description, due_date, UserId
+        console.log("++++++++  addNewTask  +++++++++++++++")
+        console.log(req.body, "this is req body")
         let { title, category, tags, description, due_date } = req.body
         console.log(req.currentUserId, "INI USER ID SAAT INI")
         let UserId = req.currentUserId
@@ -119,6 +121,32 @@ class TaskController {
                 message: "InternalServerError",
                 error:error
             })
+        })
+    }
+    static updateCategory(req,res,next){
+        /*
+        Project.update(
+            { title: 'a very different title now' },
+            { where: { _id: 1 } }
+        )
+        */
+        //    console.log ("++++++++++++++BERHASIL MASUK TASK CONTROLLER+++++++++++++++++++")
+        //     console.log (req.query)
+        //     console.log(req.params.id)
+        Task.update({category: req.query.newCategory},
+            { where : 
+                { id : req.params.id }, returning:true
+            },
+            
+        )
+        .then(result => {
+            console.log(result)
+            res.status(200).json(
+                result
+            )
+        })
+        .catch(error =>{
+            console.log(error)
         })
     }
 }

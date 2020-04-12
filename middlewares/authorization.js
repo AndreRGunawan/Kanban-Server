@@ -1,6 +1,7 @@
 const { Task } = require("../models/index.js")
 
 function authorization(req,res,next){
+    console.log("+++++++++++++++++++++++++++")
     Task.findOne({
         where:{
             id: req.params.id

@@ -14,8 +14,9 @@ router.get("/", taskController.findAll)
 router.get("/:id", taskController.getOneTask)
 router.post("/", taskController.addNewTask)
 // //authorization starts here
+router.patch("/:id", taskController.updateCategory)
 router.put("/:id", authorization, taskController.updateTask)
-router.delete("/:id", taskController.deleteTask) //delete task
+router.delete("/:id", authorization, taskController.deleteTask) //delete task
 
 // router.put("/:id")
 // router.put("/:tags")//delete tags 
