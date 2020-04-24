@@ -24,8 +24,8 @@ class TaskController {
         // model attb. : title, category, tags, description, due_date, UserId
         console.log("++++++++  addNewTask  +++++++++++++++")
         console.log(req.body, "this is req body")
-        let { title, category, tags, description, due_date } = req.body
         console.log(req.currentUserId, "INI USER ID SAAT INI")
+        let { title, category, tags, description, due_date } = req.body
         let UserId = req.currentUserId
         let newTask = {
             title,
